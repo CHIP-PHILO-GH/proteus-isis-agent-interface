@@ -33,3 +33,8 @@
 
 ## 许可
 MIT，Copyright (c) 2026 CHIP-PHILO-GH。
+
+--probe 输出 {ok:true,windows:[...],state:probe-ok|no-window}，退出码 0 表示探测调用成功；
+o-window 表示当前没有匹配窗口，兼容旧版 [] 的空窗口含义。
+
+--probe 输出结构化 JSON：ok=true 表示探测调用成功，state=probe-ok 表示发现窗口，state=no-window 表示没有窗口，windows 为窗口数组；退出码 0 表示调用成功，兼容旧版空数组语义。

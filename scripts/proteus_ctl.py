@@ -171,7 +171,7 @@ def probe():
                 "process": _process_path(pid),
             }
         )
-    return result
+    return {"ok": True, "windows": result, "state": "probe-ok" if result else "no-window"}
 
 
 def resolve_isis_exe():
@@ -537,3 +537,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
