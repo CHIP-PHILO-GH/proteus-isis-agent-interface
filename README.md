@@ -1,5 +1,7 @@
 # Proteus ISIS 自动化接口工具集
 
+只想要“照着做一遍”的封装版本（含安装、配置与排错表），见同名技能包 proteus-isis-agent-interface；本仓库是代码本体。
+
 提供 51 工程编译封装、Proteus ISIS 窗口控制、批量任务和确定性验证脚本。
 
 ## 适用对象
