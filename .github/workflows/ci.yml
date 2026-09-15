@@ -4,7 +4,10 @@ on: [push, pull_request]
 
 jobs:
   checks:
-    runs-on: ubuntu-latest
+    # 这套工具链本身就是 Windows 专用：脚本用 ctypes.windll 调 Win32 窗口接口去读
+    # Proteus 的状态栏。Linux 上没有 windll，离线自检会在 import 阶段就崩，
+    # 所以必须在 Windows 上验，不能用 Linux runner 假装跑过。
+    runs-on: windows-latest
     strategy:
       matrix:
         node: [20, 22]
