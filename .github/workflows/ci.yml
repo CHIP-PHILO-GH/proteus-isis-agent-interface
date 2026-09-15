@@ -8,6 +8,12 @@ jobs:
     # Proteus 的状态栏。Linux 上没有 windll，离线自检会在 import 阶段就崩，
     # 所以必须在 Windows 上验，不能用 Linux runner 假装跑过。
     runs-on: windows-latest
+    env:
+      # GitHub 的 Windows runner 是英文区域，Python 往**管道**写输出时默认走 ANSI 代码页
+      # （1252），而这些脚本的 argparse 帮助与 JSON 报错里都是中文，一打印就 UnicodeEncodeError、
+      # 整个 CLI 以退出码 1 崩掉。这里显式声明 UTF-8，让 CI 的编码环境是确定的，
+      # 而不是随 runner 的区域设置变化。
+      PYTHONUTF8: '1'
     strategy:
       matrix:
         node: [20, 22]
