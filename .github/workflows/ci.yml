@@ -17,3 +17,7 @@ jobs:
         with:
           python-version: '3.x'
       - run: python -m compileall -q scripts
+      # 离线自检：零外部依赖（不需要 Proteus / Keil / pywin32 / Pillow）。
+      # 任何断言失败 -> 退出码 1，闸门变红；不允许「跳过即通过」。
+      - name: 离线自检（零外部依赖）
+        run: python scripts/selftest.py
